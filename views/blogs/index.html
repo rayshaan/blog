@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>blogs</title>
+    <script src="../../public/js/jquery/jquery-3.4.1.js"></script>
+    <link rel="stylesheet" href="../../public/css/font-awescome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../public/css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="../../public/css/blogs/blogs.css">
+    <style>
+        #nav{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <div id="nav">
+        <div class="container" id="navbar">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <!-- 标题 -->
+                <a class="navbar-brand" href="#" style="color: #B5CC18;" onclick="homepage(this)">Rayshaan</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button> 
+                <!-- 每个导航 -->        
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="homepage(this)"><i class="fa fa-home"></i>首页</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fa fa-file"></i>分类</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fa fa-clock-o"></i>时间轴</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="music(this)"><i class="fa fa-music"></i>音乐盒</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fa fa-picture-o"></i>照片墙</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="message(this)"><i class="fa fa-book"></i>留言板</a>
+                        </li>
+                    </ul>
+                    <!-- 搜索框 -->
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search...." aria-label="Search">
+                        <i></i>
+                    </form>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- 上面背景 -->
+    <div id="bg-top">
+        <!-- 遮罩层 -->
+        <div id="cover">
+            <p style="display: none;" id="blogid"></p>
+        </div>
+        <img src="" alt="">
+        <!-- 内容 -->
+        <div id="content">
+            <h1></h1>
+            <p>
+                <span id="zuozhe"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                <i class="fa fa-calendar"></i>
+                <span id="riqi"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                <i class="fa fa-comment-o"></i>
+                <span id="pinglun"></span>
+            </p>
+        </div>
+    </div>
+    <!-- 背景 -->
+    <div id="bg">
+        <video id="video"  src="../../public/video/bg1.mp4" loop muted autoplay></video>
+    </div>
+    <!-- 博文内容 -->
+    <div id="blog-content">
+        <div id="blog">
+
+        </div>
+        <div id="end">
+            <span>END</span>
+        </div>
+        <br><br>
+    </div>
+    <!-- 评论 -->
+    <div id="comment">
+        <div id="comment-title">
+            <!-- 标题 -->
+            <div id="pinglun">
+                <span>评论</span>
+                <!-- 评论内容 -->
+                <div class="comments container">
+                    <!-- <div class="row">
+                        <a href="javascript:;" class="am col-0.5"><img src="../../public/images/comment-touxiang.png" alt=""></a>
+                        <div class="right-comment col-11.5">
+                            <a href="javascript:;" class="username">name</a>&nbsp;&nbsp;&nbsp;<span style="color: gray;font-size: 11px;">2021-01-01 01:01</span><br>
+                            <div class="comment-text">2021加油</div>
+                            <a href="javascript:;" style="color: gray;" onclick="reply(this)">回复</a>
+                        </div>
+                    </div> 
+                    <div class="row song-comment">
+                        <a href="javascript:;" class="am col-0.5"><img src="../../public/images/comment-touxiang.png" alt=""></a>
+                        <div class="right-comment col-11.5">
+                            <a href="javascript:;" class="username">qaq</a>&nbsp;&nbsp;<b style="color: #00B5AD;font-size: 16px;">@name</b>&nbsp;&nbsp;<span style="color: gray;font-size: 11px;">2021-01-14 07:01</span><br>
+                            <div class="comment-text">一起加油</div>
+                            <a href="javascript:;" style="color: gray;" onclick="reply(this)">回复</a>
+                        </div>
+                    </div>
+                    <div class="row song-comment">
+                        <a href="javascript:;" class="am col-0.5"><img src="../../public/images/comment-touxiang.png" alt=""></a>
+                        <div class="right-comment col-11.5">
+                            <a href="javascript:;" class="username">name</a>&nbsp;&nbsp;<b style="color: #00B5AD;font-size: 16px;">@qaq</b>&nbsp;&nbsp;<span style="color: gray;font-size: 11px;">2021-01-14 07:01</span><br>
+                            <div class="comment-text">冲冲冲</div>
+                            <a href="javascript:;" style="color: gray;" onclick="reply(this)">回复</a>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <!-- 底部文本域和按钮 -->
+        <div id="text">
+            <textarea name="content" id="" cols="30" rows="10" placeholder="请输入评论信息"></textarea>
+            <div class="container">
+                <div class="row" id="buttons">
+                    <div class="col-md-12 col-lg-3"><i class="fa fa-user user" ></i><input type="text" placeholder="昵称" id="user-input" name='username'></div>
+                    <div class="col-md-12 col-lg-3"><i class="fa fa-envelope email"></i><input type="text" placeholder="邮箱" id="email-input" name="email"></div>
+                    <div class="col-md-12 col-lg-6" id="fabu"><a href="javascript:;"><i class="fa fa-pencil-square-o"></i>发布</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 回到顶层按钮 -->
+    <div id="back-homepage" title="回到顶层"></div>
+    <!-- 页面底部 -->
+    <div id="foot">
+        <div class="container">
+            <div class="row">
+                <div class="contactme col-sm-12 col-md-3">
+                    <p>联系我</p>
+                    <p>Email：8496532@qq.com</p>
+                    <p>QQ：8496532</p>
+                </div>
+                <div class="w col-sm-12 col-md-3">
+                    <p>微信</p>
+                    <img src="../../public/images/contact/wechat.jpg" alt="">
+                </div>
+                <div class="q col-sm-12 col-md-3">
+                    <p>QQ</p>
+                    <img src="../../public/images/contact/qq.jpg" alt="">
+                </div>
+                <div class="blogdata col-sm-12 col-md-3">
+                    <p>博客信息</p>
+                    <p>文章总数：<b id="one"></b>篇</p>
+                    <p>评论总数：<b id="two"></b>条</p>
+                    <p>留言总数：<b id="three"></b>条</p>
+                </div>
+            </div>
+        </div>
+        <!-- 时间 -->
+        <div class="time">
+            <div id="time">
+                我的博客已营业：<span></span>&nbsp;&nbsp;(*๓´╰╯`๓)
+            </div>
+        </div>
+    </div>
+
+    <script src="../../public/js/bootstrap/popper.min.js"></script>
+    <script src="../../public/js/bootstrap/bootstrap.js"></script>
+    <script src="../../public/js/public.js"></script>
+    <script src="../../public/js/blogs.js"></script>
+</body>
+</html>

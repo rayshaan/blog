@@ -1,0 +1,475 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #E9EEF3;
+    position: relative;
+    z-index: -999;
+    overflow: hidden;
+}
+li{
+    list-style: none;
+}
+a{
+    cursor: pointer;
+}
+//头部
+#head{
+    width: 100%;
+    height: 60px;
+    background-color: #373D41;
+    color: #08E8D5;
+    position: relative;
+    //标题
+    h3{
+        margin-left: 15%;
+        position: absolute;
+        top: 13.5px;
+    }
+    //头像
+    #touxiang{
+        display: inline-block;
+        width: 27.5px;
+        height: 27.5px;
+        border-radius: 50%;
+        overflow: hidden;
+        position: absolute;
+        right: 235px;
+        top: 16.25px;
+    }
+    //用户名
+    span{
+        display: inline-block;
+        position: absolute;
+        top: 16px;
+        right: 160px;
+        cursor: pointer;
+    }
+    //登陆菜单
+    #menu{
+        width: 100px;
+        height: 800x;
+        font-size: 11px;
+        position: absolute;
+        top: 65px;
+        right: 145px;
+        background-color: white;
+        z-index: 999;
+        display: none;
+    }
+    #menu::before{
+        content: "";			
+        display: inline-block;
+        width: 0px;
+        height: 0px;
+        position: absolute;
+        z-index: 100;
+        top: -40px;
+        left: 30px;
+        border: 20px solid transparent;
+        border-bottom: 20px solid white;
+    }
+    div a{
+        display: inline-block;
+        width: 100%;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        color: black;    
+    }
+    div a:hover{
+        text-decoration: none;
+        background-color: #ECF5FF;
+        color: blue;
+    }
+}
+//中间表格
+#table{
+    width: 80%;
+    margin:50px 10% 0 10%;
+    background-color: white;
+    //搜索栏
+    #search{
+        margin: 0 0 20px 2%;
+        position: relative;
+        input{
+            outline: none;
+            margin-top: 20px;
+            border: 1px solid gray;
+            width: 400px;
+            height: 40px;
+            border-radius: 5px;
+            padding-left: 20px;
+        }
+        i{
+            padding: 11px 20px;
+            border: 1px solid gray;
+            border-radius: 5px;
+            background-color: #F5F7FA;
+            position: absolute;
+            left: 343.14px;
+            top: 20px;
+            cursor: pointer;
+        }
+        //发布
+        #publish{
+            padding: 10px 25px;
+            border-radius: 5px;
+            color: white;
+            background-color: #409EFF;
+            margin-left: 75px;
+        }
+        a:hover{
+            text-decoration: none;
+        }
+        //更改背景
+        #change{
+            display: inline-block;
+            padding: 10px 25px;
+            text-align: right;
+            width: 600px;
+            height: 40px;
+            margin-left: 50px;
+            a{
+                padding: 5px 15px;
+                border-radius: 5px;
+                background-color: #E9EEF3;
+                margin: 0 5px;
+                color: black;
+            }
+            .choose{
+                background-color: #409EFF;
+                border: none;
+                color: white;
+            }
+        }
+    }
+    //中间表格
+    table{
+        width: 96%;
+        height: 100%;
+        text-align: center;
+        margin: 0 2%;
+        border-color: #EEF0F3;
+        thead tr td{
+            height: 75px;
+        }
+        .long{
+            width: 18%;       
+        }
+        .short{
+            width: 10%;
+        }
+        tbody{
+            tr{
+                td{
+                    width: 16.6%;
+                    height: 100px;
+                    a{
+                        padding: 5px 20px;
+                        border-radius: 5px;
+                        i{
+                            color: white;
+                        }
+                    }
+                    .changedata{
+                        background-color: #409EFF;
+                        margin-right: 20px;
+                    }
+                    .delete{
+                        background-color: #F56C6C;
+                    }
+                    img{
+                        max-height: 80%;
+                        max-width: 90%;
+                    }
+                }
+            }
+            tr:hover{
+                background-color: #F5F7FA;
+            }
+        }
+    }
+    //下面分页
+    #limit{
+        width: 96%;
+        height: 50px;
+        margin: 20px 2% 0 2%;
+        div{
+            display: inline-block;
+            height: 100%;
+            line-height: 50px;
+        }
+        #left-data{
+            width: 45%;
+            text-align: right;
+            span{
+                padding: 3.5px 15px;
+                border: 1px solid #EEF0F3;
+                border-radius: 5px;
+            }
+            span:nth-child(1){
+                margin-right: 25px;
+            }
+        }
+        #right-limit{
+            width: 54%;
+            a{
+                color: black;
+                padding: 5px 12.5px;
+                border: 1px solid #EEF0F3;
+                border-radius: 5px;
+                margin: 0 5px;
+                font-size: large;
+                background-color: #F4F4F5;
+            }
+            a:nth-child(1){
+                margin-left: 50px;
+            }
+            a:hover{
+                text-decoration: none;
+            }
+        }
+    }
+}
+.active{
+    background-color: #409EFF !important;
+    color: white !important;
+}
+//修改博客
+.cover1{
+    min-width: 100vw;
+    min-height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    #alert{
+        width:700px;
+        height: 500px;
+        background-color: #F4F4F5;
+        position: relative;
+        z-index: 10000;
+        top: 150px;
+        left: 475px;
+        border: 1px solid gray;
+        h3{
+            display: inline-block;
+            margin-top: 35px;
+            margin-left: 250px;
+        }
+        .off{
+            display: inline-block;
+            position: absolute;
+            top: 3px;
+            right: 10px;
+            cursor: pointer;
+        }
+        #changeblog{
+            width: 100%;
+            height: 300px;
+            margin-top: 20px;
+            position: relative;
+            .input{
+                margin-top: 30px;
+                width: 400px;
+                height: 35px;
+                outline: none;
+                border: 1px solid #E6E9ED;
+                padding-left: 15px;
+            }
+            .property{
+                font-size: large;
+                margin-left: 100px;
+            }
+            #upload{
+                display: inline-block;
+                padding: 5px 26px;
+                background-color: #56B056;
+                color: white;
+                cursor: pointer;
+                border-radius: 5px;
+                margin-left: 10px;
+            }
+            #fileimg{
+                padding-left: 0;
+                position: absolute;
+                top: 100px;
+                left: 600px;
+                opacity: 0;
+                display: none;
+            }
+        }
+        #control{
+            a{
+                padding: 12.5px 20px;
+                border-radius: 5px;
+                position: absolute;
+                bottom: 30px;
+            }
+            #cancel{
+                background-color: white;
+                border: 1px solid  #DEE1E7;
+                color: black;
+                right: 150px;
+            }
+            #confirm{
+                background-color: #409EFE;
+                color: white;
+                right: 50px;
+            }
+        }
+    }
+}
+//发布博客
+.cover2{
+    min-width: 100vw;
+    min-height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    #pushblog{
+        width:700px;
+        height: 600px;
+        background-color: #F4F4F5;
+        position: relative;
+        z-index: 10000;
+        top: 150px;
+        left: 475px;
+        border: 1px solid gray;
+        h3{
+            display: inline-block;
+            margin-top: 35px;
+            margin-left: 300px;
+        }
+        .upoff{
+            display: inline-block;
+            position: absolute;
+            top: 3px;
+            right: 10px;
+            cursor: pointer;
+        }
+        #upblog{
+            width: 100%;
+            height: 300px;
+            margin-top: 20px;
+            position: relative;
+            .input{
+                margin-top: 30px;
+                width: 400px;
+                height: 35px;
+                outline: none;
+                border: 1px solid #E6E9ED;
+                padding-left: 15px;
+            }
+            .property{
+                font-size: large;
+                margin-left: 100px;
+            }
+            #uploadimg{
+                display: inline-block;
+                padding: 5px 26px;
+                background-color: #56B056;
+                color: white;
+                cursor: pointer;
+                border-radius: 5px;
+                margin-left: 10px;
+            }
+            #upfileimg{
+                padding-left: 0;
+                background-color: pink;
+                position: absolute;
+                top: 100px;
+                left: 600px;
+                opacity: 0;
+                display: none;
+            }
+        }
+        #upcontrol{
+            a{
+                padding: 12.5px 20px;
+                border-radius: 5px;
+                position: absolute;
+                bottom: 30px;
+            }
+            #upcancel{
+                background-color: white;
+                border: 1px solid  #DEE1E7;
+                color: black;
+                right: 150px;
+            }
+            #upconfirm{
+                background-color: #409EFE;
+                color: white;
+                right: 50px;
+            }
+        }
+    }
+}
+//对话
+#web{
+    width: 350px;
+    height: 500px;
+    position: absolute;
+    bottom: 70px;
+    right:0;
+    border: 1px solid gray;
+    background-image: linear-gradient(to top, #fad0c4 0%, #fad0c4 1%, #ffd1ff 100%);
+    display: none;
+    #session{
+        width: 100%;
+        height: 450px;
+        padding: 10px 15px;
+        ul{
+            li{
+                font-size: 13px;
+                width: 100%;
+            }
+            .left{
+                text-align: left;
+                span{
+                    color: #409EFF;
+                }
+            }
+            .right{
+                text-align: right;
+                span{
+                    color:#008978;
+                }
+            }
+        }
+    }
+    input{
+        width: 100%;
+        height: 50px;
+        border: 0;
+        outline: none;
+        padding-left: 10px;
+        background-image: linear-gradient(to right,#b8cbb8 0%,#b8cbb8 0%,#b465da 0%,#cf6cc9 33%,#ee609c 66%,#ee609c 100%);
+    }
+}
+//控制图标
+#newweb{
+    position: absolute;
+    bottom: 50px;
+    right: 7.5px;
+    z-index: 9999;
+    display: inline-block;
+    cursor: pointer;
+    //animation: twink 3s infinite ease;
+}
+@keyframes twink{
+    0%{opacity: 1}
+    10%{opacity: 0.1}
+    20%{opacity: 1}
+    30%{opacity: 0.1}
+    40%{opacity: 1}
+    50%{opacity: 0.1}
+    60%{opacity: 1}
+    70%{opacity: 0.1}
+    80%{opacity: 1}
+    90%{opacity: 0.1}
+    100%{opacity: 1}
+}

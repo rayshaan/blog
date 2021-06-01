@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>music</title>
+    <script src="../../public/js/jquery/jquery-3.4.1.js"></script>
+    <link rel="stylesheet" href="../../public/css/font-awescome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../public/css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="../../public/css/public.css"><!-- 公共样式 -->
+    <style>
+        #change{
+            width: 100%;
+        } 
+        #nav{
+            display: block;
+        }
+        #foot{
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>    
+    <!-- 导航栏 -->
+    <div id="nav">
+        <div class="container" id="navbar">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <!-- 标题 -->
+                <a class="navbar-brand" href="#" style="color: #B5CC18;" onclick="homepage(this)">Rayshaan</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button> 
+                <!-- 每个导航 -->        
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="homepage(this)"><i class="fa fa-home"></i>首页</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fa fa-file"></i>分类</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fa fa-clock-o"></i>时间轴</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#"><i class="fa fa-music"></i>音乐盒</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fa fa-picture-o"></i>照片墙</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="message(this)"><i class="fa fa-book"></i>留言板</a>
+                        </li>
+                    </ul>
+                    <!-- 搜索框 -->
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search...." aria-label="Search">
+                        <i></i>
+                    </form>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- 上面背景 -->
+    <div id="bg-top">
+        <!-- 遮罩层 -->
+        <div id="cover"></div>
+        <img src="../../public/images/love.jpg" alt="">
+        <!-- 内容 -->
+        <div id="content"><h1>音乐盒</h1></div>
+    </div>
+    <!-- <div id="through"><iframe src="throughtime.html" frameborder="0" width="100%" height="100%"></iframe></div> -->
+    <div id="change"><iframe src="" frameborder="0" width="100%" height="100%"></iframe></div>
+    <!-- 页面底部 -->
+    <div id="foot">
+        <div class="container">
+            <div class="row">
+                <div class="contactme col-sm-12 col-md-3">
+                    <p>联系我</p>
+                    <p>Email：8496532@qq.com</p>
+                    <p>QQ：8496532</p>
+                </div>
+                <div class="w col-sm-12 col-md-3">
+                    <p>微信</p>
+                    <img src="../../public/images/contact/wechat.jpg" alt="">
+                </div>
+                <div class="q col-sm-12 col-md-3">
+                    <p>QQ</p>
+                    <img src="../../public/images/contact/qq.jpg" alt="">
+                </div>
+                <div class="blogdata col-sm-12 col-md-3">
+                    <p>博客信息</p>
+                    <p>文章总数：<b id="one"></b>篇</p>
+                    <p>评论总数：<b id="two"></b>条</p>
+                    <p>留言总数：<b id="three"></b>条</p>
+                </div>
+            </div>
+        </div>
+        <!-- 时间 -->
+        <div class="time">
+            <div id="time">
+                我的博客已营业：<span></span>&nbsp;&nbsp;(*๓´╰╯`๓)
+            </div>
+        </div>
+    </div>
+
+    <script src="../../public/js/bootstrap/popper.min.js"></script>
+    <script src="../../public/js/bootstrap/bootstrap.js"></script>
+    <script src="../../public/js/public.js"></script><!-- 公共设置 -->
+    <script>
+        $.ajax({
+            url:'http://127.0.0.1:8989/fingbg',
+            success(data){
+                $("#change iframe").attr('src',`${data[0].src}`);
+                $("#change").height(`${data[0].height}`);
+            }
+        });
+        console.log($(document).height())
+        console.log($(window).height())
+    </script>
+</body>
+</html>

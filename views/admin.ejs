@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>admin</title>
+    <script src="../../public/js/jquery/jquery-3.4.1.js"></script>
+    <link rel="stylesheet" href="../../public/css/font-awescome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../public/css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="../../public/css/admin/admin.css">
+</head>
+<body>
+    <div id="head">
+        <h3>博客管理</h3>
+        <a  id="touxiang"><img src="../../public/images/touxiang.jpg" alt=""></a>
+       <span><%=username%></span>
+        <div id="menu">
+            <a id="logout">退出登陆</a>
+            <a id="destroy">注销账号</a>
+        </div>
+    </div>
+   <div id="table">
+        <div id="search">
+            <input type="search" placeholder="请输入要查询的博客标题" id="searchinput">
+            <i class="fa fa-search"></i>
+            <a href="javascript:;" id="publish">发布博客</a>
+            <div id="change">
+                <span>修改音乐盒背景</span>
+                <a id="through">穿越时间隧道</a>
+                <a id="3D">3D星空</a>
+            </div>
+        </div>
+        <div>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <td class='long'>ID</td>
+                        <td class="short">博客封面</td>
+                        <td class='long'>博客标题</td>
+                        <td class='long'>作者</td>
+                        <td class='long'>发布时间</td>
+                        <td class='long'>操作</td>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+        <div id="limit">
+            <div id="left-data">
+                <span>共<b id="all"></b>篇</span>
+            </div>
+            <div id="right-limit">
+                
+            </div>
+        </div>
+    </div>
+    <div class="cover1">
+        <div id="alert">
+            <h3>修改博客信息</h3><span class="off" title="关闭修改界面">X</span>
+            <div id="changeblog">
+                <span class="property">博客标题</span>&nbsp;&nbsp;<input type="text" id="blogtitle" class="input"><br>
+                <span class="property">博客配图</span>&nbsp;&nbsp;<input type="text" id="blogimg" class="input"><input type="file" id="fileimg"><span id="upload">上传</span><br>
+                <span class="property">博客内容</span>&nbsp;&nbsp;<input type="text" id="blogcontent" class="input"><br>
+                <span class="property">博客作者</span>&nbsp;&nbsp;<input type="text" id="blogauthor" class="input" disabled><br>
+            </div>
+            <div id="control">
+                <a id="cancel">取消</a>
+                <a id="confirm">确认</a>
+            </div>
+        </div>
+    </div>
+    <div class="cover2">
+        <div id="pushblog">
+            <h3>发布博客</h3><span class="upoff" title="关闭发布界面">X</span>
+            <div id="upblog">
+                <span class="property">博客标题</span>&nbsp;&nbsp;<input type="text" id="upblogtitle" class="input"><br>
+                <span class="property">博客配图</span>&nbsp;&nbsp;<input type="text" id="upblogimg" class="input"><input type="file" id="upfileimg"><span id="uploadimg">上传</span><br>
+                <span class="property">博客简介</span>&nbsp;&nbsp;<input type="text" id="upblogp" class="input"><br>
+                <span class="property">博客内容</span>&nbsp;&nbsp;<input type="text" id="upblogcontent" class="input"><br>
+                <span class="property">博客作者</span>&nbsp;&nbsp;<input type="text" id="upblogauthor" class="input" disabled><br>
+            </div>
+            <div id="upcontrol">
+                <a id="upcancel">取消</a>
+                <a id="upconfirm">确认</a>
+            </div>
+        </div>
+    </div>
+    <div id="web">
+        <div id="session">
+            <ul>
+                
+            </ul>
+        </div>
+        <input type="text" id="submit">
+    </div>
+    <i class="fa fa-comments-o" id="newweb"></i>
+
+
+    <script src="../../public/js/bootstrap/popper.min.js"></script>
+    <script src="../../public/js/bootstrap/bootstrap.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="../../public/js/admin.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,266 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    overflow-x: hidden !important;
+    width: 100vw;
+}
+//取消滚动条
+body::-webkit-scrollbar{
+    width:0;   
+}
+#nav{
+    position: fixed;
+    min-width: 100vw;
+    z-index: 10000;
+    top: 0;
+    left: 0;
+    display: none;
+    #navbar{
+        margin: 0;
+        padding: 0;
+        min-width: 100%;
+        min-height: 60px;
+        .navbar{
+            min-height: 60px;
+            font-size: 14px;
+            opacity: 0.5;
+            background-color: black !important;
+            .navbar-brand{
+                margin: 0 7%;
+            }
+            //导航条
+            .navbar-nav{
+                min-width: 70%;
+                //每个导航
+                .nav-item{
+                    min-width: 10%;
+                    border-radius: 5px;
+                    margin: 0 10% 0 0;
+                    a{
+                        //text-align: center;
+                        i{
+                            margin-right: 10px;
+                        }
+                    }
+                }
+                //当前分页颜色
+                .nav-item:hover{
+                    background-color: #231E1B;
+                }
+                .active{
+                    background-color:  #231E1B;
+                }
+            }
+        }
+    }
+}
+//上面背景
+#bg-top{
+    max-width: 100vw;
+    max-height: 400px;
+    overflow: hidden;
+    color: #FFFFFF !important;
+    #cover{
+        width: 100%;
+        height: 400px;
+        background-color: black;
+        position: relative;
+        opacity: 0.8;
+        top: 0;
+        left: 0;
+        z-index: 8;
+    }
+    img{
+        width: 100vw;
+        height: 400px;
+        position: absolute;
+        top: 0;
+        left:0;
+        z-index: 5;
+    }
+    //内容
+    #content{
+        position: absolute;
+        min-width: 70%;
+        margin: 0 15%;
+        top: 100px;
+        left: 0;
+        text-align: center;
+        z-index: 1000;
+        p{
+            margin-top: 40px;
+        }
+    }
+}
+//背景
+#bg{
+    width: 100%;
+    height: 100%;
+    //video背景
+    video{
+        position: fixed;
+        display: block;
+        width: 100%;
+        height:100%;
+        object-fit: fill;
+        right: 0px;
+        bottom: 0px;
+        top: 0px;
+        left: 0px;
+        z-index: -9999;
+    }
+}
+//回到顶层按钮
+#back-homepage{
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    background-color: #00B5AD;
+    z-index: 10000;
+    border-radius: 5px;
+    right: 0;
+    bottom: 50px;
+    cursor: pointer;
+    transition: all 0.6s;
+    display: none;
+}
+//箭头
+#back-homepage::before{
+    content: "";			
+    display: inline-block;
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    border: 10px solid transparent;
+    border-bottom: 10px solid white;
+}
+//定义边框
+$border:1px solid gray;
+//页面底部
+#foot{
+    width: 100%;
+    height: 25%;
+    background-color: black;
+    margin-top: 100px;
+    opacity: 0.8;
+    .container{
+        .row{
+            color: white;
+            font-size: 14px;
+            //左边联系方式
+            .contactme{
+                text-align: center;
+                border-right: $border;
+                p:nth-child(1){
+                    margin-top: 30px;
+                }
+            }
+            //WX
+            .w{
+                text-align: center;
+                border-right: $border;
+                p{
+                    margin-top: 10px;
+                }
+            }
+            //QQ
+            .q{
+                text-align: center;
+                border-right: $border;
+                p{
+                    margin-top: 10px;
+                }
+            }
+            //右边博客数据
+            .blogdata{
+                text-align: center;
+                border-left: $border;
+                p{
+                    margin-top: 20px;
+                    b{
+                        color:orangered;
+                    }
+                }
+            }   
+        }
+    }
+    //时间
+    .time{
+        width: 100%;
+        height: 51px;
+        border-top: $border;
+        #time{
+            width: 80%;
+            height: 50px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 50px;
+            color: orangered;
+        }
+    }
+}
+@media  screen and (max-width:768px){
+    #article #articles .blogs div:nth-child(2) {
+            min-width: 100%;
+            margin-top: 20px;
+    }
+    #foot .container .row .contactme{
+        border-right: 0;
+    }
+    #foot .container .row .q {
+        border-right: 0;
+        p{
+            border-top: $border;
+            padding-top: 15px;
+            margin-top: 20px;
+        }
+    }
+    #foot .container .row .w{
+        border-right: 0;
+        p {
+            border-top: $border;
+            padding-top: 15px;
+        }
+    }
+    #foot .container .row .blogdata {
+        border-left:0;
+        p:nth-child(1){
+            border-top: $border;
+            padding-top: 15px;
+        }
+    }
+    .time{
+        font-size: 10px;
+    }
+}
+@media  screen and (max-width:992px){
+    #nav .container .navbar .navbar-nav .nav-item a {
+        text-align: left !important;
+        margin-left: 10px;
+    }
+    .navbar-brand{
+        margin:0 !important;
+    }
+}
+@media screen and (min-width:992px) and (max-width:1057px){
+    #nav #navbar .navbar .navbar-brand{
+        margin: 0 3% !important;
+    }
+     .nav-item{
+        width:16.6% !important;
+        margin-right: 0 !important;
+    }
+}
+@media screen and (min-width:1058px) and (max-width:1507px){
+    #nav #navbar .navbar .navbar-brand{
+        margin: 0 7% !important;
+    }
+     .nav-item{
+        width:16.6% !important;
+        margin-right: 0 !important;
+    }
+}

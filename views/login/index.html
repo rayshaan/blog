@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			outline: none;
+			box-sizing: border-box;
+		}
+		body{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			min-height: 100vh;
+		}
+		.title{
+			width: 100%;
+			height: 100px;
+			text-align: center;
+		}
+		.wrapper{
+			width: 450px;
+			background-color: #fff;
+			padding: 30px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            opacity: 0.8;
+		}
+		.wrapper .input-data{
+			width: 100%;
+			height: 40px;
+			position: relative;
+		}
+		.wrapper .input-data input{
+			width: 100%;
+			height: 100%;
+			border: none;
+			border-bottom: 2px solid silver;
+			font-size: 17px;
+		}
+		.input-data input:focus ~ label,
+		.input-data input:valid ~ label{
+			transform: translateY(-20px);
+			font-size: 15px;
+			color: #4158D0;
+		}
+		.wrapper .input-data label{
+			position: absolute;
+			bottom: 20px;
+			left: 0;
+			color: grey;
+			pointer-events: none;
+			transition: all 0.3s ease;
+		}
+		.wrapper .input-data .underline{
+			position: absolute;
+			bottom: 0px;
+			height: 2px;
+			width: 100%;
+		}
+		.input-data .underline:before{
+			position: absolute;
+			content: "";
+			height: 100%;
+			width: 100%;
+			background: #4158D0;
+			transform: scaleX(0);
+			transition:transform 0.3s ease;
+		}
+		
+		.input-data input:focus ~ .underline:before,
+		.input-data input:valid ~ .underline:before{
+			transform: scaleX(1);
+		}
+		#pwd{
+			margin-top: 50px;
+		}
+		#login{
+			text-align: center;
+			margin-top: 50px;
+			position: relative;
+		}
+		#log{
+			padding: 10px 30px;
+			border-radius: 5px;
+			background-image: linear-gradient(to right,#b8cbb8 0%,#b8cbb8 0%,#b465da 0%,#cf6cc9 33%,#ee609c 66%,#ee609c 100%);
+			text-decoration: none;
+			color: white;
+		}
+		#login p{
+			font-size: 12px;
+			position: absolute;
+			right:0;
+		}
+		#login p a{
+			text-decoration: none;
+			color: black;
+		}
+		a{
+			cursor: pointer;
+		}
+		#login p a:hover{
+			text-decoration: underline;
+			color: purple;
+        }
+        video {
+            /*将视频作为背景*/
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -9999;
+		}
+		.input-data p{
+			display: none;
+			font-size: 12px;
+			color: red;
+		}
+	</style>
+	<body>
+		<div class="wrapper">
+			<div class='title'>
+				<h1>登录</h1>
+			</div>
+			<div class="input-data">
+				<input type="text"  id="username">
+				<div class="underline" id="userline"></div>
+				<p id="up"></p>
+				<label id="usertext">用户名</label>
+			</div>
+			<div class="input-data" id="pwd">
+				<input type="password" id="password">
+				<div class="underline" id="pwdline"></div>
+				<p id="wp"></p>
+				<label id="pwdtext">密码</label>
+			</div>
+			<div id="login">
+				<a  id="log">登录</a>
+				<p>没有账号?&nbsp;<a  id="register">注册</a></p>
+			</div>
+        </div>
+		<video src="../../public/video/anime.mp4" autoplay muted loop></video>
+		
+		<script src="../../public/js/jquery/jquery-3.4.1.js"></script>
+		<script>
+			
+			$("#register").click(()=>location.href='/register')
+
+			//输入时验证
+			$("#username").on('input',function(){
+				$.ajax({
+					url:'http://127.0.0.1:8989/username',
+					data:{
+						username:$(this).val()
+					},
+					method:'post',
+					success(data){
+						if(!data.length){//用户名不存在
+							$('#username').focus()
+							$("#usertext").css('color','red');
+							$("#userline").addClass('error');
+							$("#up").text(`用户名不存在`).css('display','block');
+						}else{//用户名存在
+							$("#password").focus()
+							$("#usertext").css('color','');
+							$("#userline").removeClass('error');
+							$("#up").css('display','none');
+							//验证是否登录过
+							$.ajax({
+								url:"http://127.0.0.1:8989/getsess",
+								data:{
+									username:$("#username").val()
+								},
+								success(data){
+									if(data.length){
+										let a=confirm('检测到您登录过，是否跳过登录？');
+										if(a==true){
+											location.href='/admin'
+										}
+									}
+								}
+							})
+						}
+					}
+				})
+			})
+			$("#password").on('input',function(){
+				$.ajax({
+					url:'http://127.0.0.1:8989/username',
+					data:{
+						username:$('#username').val()
+					},
+					method:'post',
+					success(data){
+						if(!data.length){//用户不存在
+							$("#username").focus();
+							$("#pwdtext").css('color','red');
+							$("#pwdline").addClass('error');
+							$("#wp").css('display','block');
+						}else{//用户存在时验证密码
+							$("#password").focus();
+							if($('#password').val()!=data[0].password){//密码错误
+								$("#password").focus();
+								$("#pwdtext").css('color','red');
+								$("#pwdline").addClass('error');
+								$("#wp").text(`密码错误`).css('display','block'); 
+							}else{//密码正确
+								$("#pwdtext").css('color','');
+								$("#pwdline").removeClass('error');
+								$("#wp").css('display','none');
+							}
+						}
+					}
+				})
+			})
+			$("#log").click(function(){
+				if($("#username").val()!=""&&$("#password").val()!=""&&$('.underline').hasClass('error')==false){
+					$.ajax({
+						url:'http://127.0.0.1:8989/userlogin',
+						method:'post',
+						data:{
+							username:$("#username").val(),
+							password:$("#password").val()
+						},
+						success(data){
+							location.href='/admin'
+						}
+					});
+				}else{
+					if($("#username").val()==""){
+						$("#usertext").css('color','red');
+						$("#userline").addClass('error');
+						$("#up").text(`请输入用户名`).css('display','block');
+					}
+					if($("#password").val()==""){
+						$("#pwdtext").css('color','red');
+						$("#pwdline").addClass('error');
+						$("#wp").text(`请输入密码`).css('display','block'); 
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

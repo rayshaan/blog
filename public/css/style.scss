@@ -1,0 +1,488 @@
+//定义通用样式
+*{
+    margin: 0;
+    padding: 0;
+}
+li{
+    list-style: none;
+}
+a,a:hover{
+    text-decoration: none;
+}
+html{
+    overflow-x: hidden !important;
+    width: 100vw;
+}
+//取消滚动条
+body::-webkit-scrollbar{
+    width:0;   
+}
+//轮播图
+#carousel{
+    width: 100vw;
+    //背景图
+    #bg{
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        z-index: -100;
+    }
+    //轮播内容
+    #carousel-content{
+        #c1{
+            width: 100vw;
+            height:100vh;
+            position: relative;
+            z-index: 100;
+            .carousel-inner{
+                height: 100vh;
+            }
+            .text{
+                text-align: center;
+                //上面标题
+                .title{
+                    margin-top: 250px;
+                    font-size: 3.25rem;
+                    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;;
+                    font-weight: 700;
+                    color: #00B5AD;
+                }
+                //中间段落
+                p{
+                    font-size: 2.25rem;
+                    margin-top: 75px;
+                }
+                //图标
+                #icon{
+                    margin-top: 75px;
+                    //二维码
+                    div{
+                        width: 120px;
+                        height: 120px;
+                        background-color: white;
+                        display: inline-block;
+                        position: absolute;
+                        text-align: center;
+                        margin-top: 70px;
+                        margin-left: -100px;
+                        visibility: hidden;
+                    }
+                    //箭头
+                    div::after{
+                        content: "";			
+                        display: inline-block;
+                        width: 0px;
+                        height: 0px;
+                        position: absolute;
+                        border: 10px solid transparent;
+                        border-bottom: 10px solid white;
+                        top: -20px;
+                        left: 50px;
+                    }
+                    //每个图标
+                    a{
+                        display: inline-block;
+                        width: 40px;
+                        height:40px;
+                        background-color:#E0E1E2;
+                        border-radius: 100%;
+                        border: 1px solid#E0E1E2;
+                        margin: 5px 15px;
+                        i{
+                            text-align: center;
+                            line-height: 40px;
+                            color: #676768;
+                        }
+                    }
+                    //悬停变色
+                    a:hover{
+                        background-color: #CACBCD;
+                    }
+                }
+                //下面阅读更多按钮
+                .more{
+                    display: inline-block;
+                    text-decoration: none;
+                    padding: 10px 25px;
+                    color: orange;
+                    border: 1px solid orange;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    text-align: center;
+                    margin-top: 75px;
+                }
+            }
+        }
+    }
+}
+//导航栏
+#nav{
+    position: fixed;
+    min-width: 100vw;
+    z-index: 10000;
+    top: 0;
+    left: 0;
+    display: none;
+    #navbar{
+        margin: 0;
+        padding: 0;
+        min-width: 100%;
+        min-height: 60px;
+        .navbar{
+            min-height: 60px;
+            font-size: 14px;
+            opacity: 0.5;
+            background-color: black !important;
+            .navbar-brand{
+                margin: 0 7%;
+            }
+            //导航条
+            .navbar-nav{
+                min-width: 70%;
+                text-align: center;
+                //每个导航
+                .nav-item{
+                    min-width: 10%;
+                    border-radius: 5px;
+                    margin: 0 10% 0 0;
+                    a{
+                        text-align: center;
+                        i{
+                            margin-right: 10px;
+                        }
+                    }
+                }
+                //当前分页颜色
+                .nav-item:hover{
+                    background-color: #231E1B;
+                }
+                .active{
+                    background-color:  #231E1B;
+                }
+            }
+        }
+    }
+}
+//背景
+#bg{
+    width: 100%;
+    height: 100%;
+    //video背景
+    video{
+        position: fixed;
+        display: block;
+        width: 100%;
+        height:100%;
+        object-fit: fill;
+        right: 0px;
+        bottom: 0px;
+        top: 0px;
+        left: 0px;
+        z-index: -9999;
+    }
+}
+//中间最新推荐
+#new-article{
+    width: 100vw;
+    position: relative;
+    z-index: 100;
+    margin: 50px 0;
+    //容器
+    .title{
+        margin: 0 auto !important;
+        min-width: 80vw;
+        //最新推荐
+        .row:nth-child(1){
+            div{
+                min-width: 80%;
+                height: 50px;
+                background-color: #DDE6ED;
+                text-align: center;
+                line-height: 50px;
+                margin: 0 auto;
+            }
+        }
+        //下面图片
+        .row:nth-child(2){
+            div{
+                padding: 30px;
+                margin: 30px 0 0 0;
+                overflow: hidden;
+                transition: all 0.6s;
+                img{
+                    max-width: 100%;
+                    max-height: 100%;
+                }
+                //图片上的标题
+                span{
+                    height: 30px;
+                    line-height: 30px;
+                    h4{
+                        background-color: black;
+                        opacity: 0.5;
+                        font-size: 20px;
+                        font-weight: bold;
+                        color: white;
+                        margin-top: -24px;
+                    }
+                }
+            }
+            //悬停变大
+            div:hover{
+                transform: translateY(-10px) scale(1.05);
+            }
+        }
+    }
+}
+//博文列表
+#article{
+    position: relative;
+    z-index: 100;
+    width: 100vw;
+    //容器
+    #articles{
+        margin: 0 auto !important;
+        min-width: 80vw;
+        //最新文章
+        .row:nth-child(1){
+            min-width: 100%;
+            margin-top: 100px !important;
+            div{
+                min-width: 80%;
+                height: 50px;
+                background-color: #DDE6ED;
+                text-align: center;
+                line-height: 50px;
+                margin: 0 auto;
+            }
+        }
+        //每篇博文
+        .blogs{
+            background-color: white;
+            min-width: 100%;
+            margin-top: 50px;
+            opacity: 0.9;
+            border-radius: 10px;
+            padding: 15px;
+            overflow: hidden;
+            //左边内容
+            div:nth-child(1){
+                min-width: 70%;
+                //标题
+                h3{
+                    margin-top: 25px;
+                    cursor: pointer;
+                    a{
+                        color: black;
+                    }
+                }
+                //简介
+                p{
+                    margin: 40px 0 30px 0;
+                }
+                //下方作者日期和评论
+                div{
+                    margin-top: 65px;
+                    i:nth-child(1){
+                        display: inline-block;
+                        width: 25px;
+                        height: 25px;
+                        border-radius: 100%;
+                        overflow: hidden;
+                        margin-bottom: -5px;
+                    }
+                }
+            }
+            //右边博文配图
+            div:nth-child(2){
+                max-width: 30%;
+                img{
+                    max-width: 100%;
+                    transition: all 0.6s;
+                    cursor: pointer;
+                }
+                //悬停变大
+                img:hover{
+                    transform: scale(1.05);
+                }
+            }
+        }
+        //下面分页
+        .limit{
+            width: 100%;
+            height: 50px;
+            min-width: 100%;
+            margin: 20px auto;
+            background-color: white;
+            opacity: 0.9;
+            padding: 15px;
+            div{
+                cursor: pointer;
+            }
+            //上一页
+            div:nth-child(1){
+                margin-left: 5%;
+            }
+            //当前页/总页数
+            div:nth-child(2){
+                margin: 0 auto;
+            }
+            //下一页
+            div:nth-child(3){
+                margin-right: 5%;
+            }
+        }
+    }
+}
+//回到顶层按钮
+#back-homepage{
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    background-color: #00B5AD;
+    z-index: 10000;
+    border-radius: 5px;
+    right: 0;
+    bottom: 50px;
+    cursor: pointer;
+    transition: all 0.6s;
+    display: none;
+}
+//箭头
+#back-homepage::before{
+    content: "";			
+    display: inline-block;
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    border: 10px solid transparent;
+    border-bottom: 10px solid white;
+}
+//定义边框
+$border:1px solid gray;
+//页面底部
+#foot{
+    width: 100%;
+    height: 25%;
+    background-color: black;
+    margin-top: 100px;
+    opacity: 0.8;
+    .container{
+        .row{
+            color: white;
+            font-size: 14px;
+            //左边联系方式
+            .contactme{
+                text-align: center;
+                border-right: $border;
+                p:nth-child(1){
+                    margin-top: 30px;
+                }
+            }
+            //WX
+            .w{
+                text-align: center;
+                border-right: $border;
+                p{
+                    margin-top: 10px;
+                }
+            }
+            //QQ
+            .q{
+                text-align: center;
+                border-right: $border;
+                p{
+                    margin-top: 10px;
+                }
+            }
+            //右边博客数据
+            .blogdata{
+                text-align: center;
+                border-left: $border;
+                p{
+                    margin-top: 20px;
+                    b{
+                        color:orangered;
+                    }
+                }
+            }
+        }
+    }
+    //时间
+    .time{
+        width: 100%;
+        height: 51px;
+        border-top: $border;
+        #time{
+            width: 80%;
+            height: 50px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 50px;
+            color: orangered;
+        }
+    }
+}
+@media  screen and (max-width:768px){
+    #article #articles .blogs div:nth-child(2) {
+            min-width: 100%;
+            margin-top: 20px;
+    }
+    #foot .container .row .contactme{
+        border-right: 0;
+    }
+    #foot .container .row .q {
+        border-right: 0;
+        p{
+            border-top: $border;
+            padding-top: 15px;
+            margin-top: 20px;
+        }
+    }
+    #foot .container .row .w{
+        border-right: 0;
+        p {
+            border-top: $border;
+            padding-top: 15px;
+        }
+    }
+    #foot .container .row .blogdata {
+        border-left:0;
+        p:nth-child(1){
+            border-top: $border;
+            padding-top: 15px;
+        }
+    }
+    .time{
+        font-size: 10px;
+    }
+}
+@media screen and (max-width:992px){
+    #nav .container .navbar .navbar-nav .nav-item a {
+        text-align: left !important;
+        margin-left: 10px;
+    }
+    .navbar-brand{
+        margin:0 !important;
+    }
+}
+@media screen and (min-width:992px) and (max-width:1057px){
+    #nav #navbar .navbar .navbar-brand{
+        margin: 0 3% !important;
+    }
+     .nav-item{
+        width:16.6% !important;
+        margin-right: 0 !important;
+    }
+}
+@media screen and (min-width:1058px) and (max-width:1507px){
+    #nav #navbar .navbar .navbar-brand{
+        margin: 0 7% !important;
+    }
+     .nav-item{
+        width:16.6% !important;
+        margin-right: 0 !important;
+    }
+}
