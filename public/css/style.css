@@ -176,14 +176,9 @@ body::-webkit-scrollbar {
 #bg {
   width: 100%;
   height: 100%;
-}
-
-#bg video {
   position: fixed;
-  display: block;
-  width: 100%;
-  height: 100%;
   object-fit: fill;
+  background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
   right: 0px;
   bottom: 0px;
   top: 0px;
@@ -220,22 +215,20 @@ body::-webkit-scrollbar {
 }
 
 #new-article .title .row:nth-child(2) div img {
+  width: 100%;
+  height: 100%;
   max-width: 100%;
   max-height: 100%;
 }
 
 #new-article .title .row:nth-child(2) div span {
+  display: inline-block;
+  width: 100%;
   height: 30px;
   line-height: 30px;
-}
-
-#new-article .title .row:nth-child(2) div span h4 {
   background-color: black;
-  opacity: 0.5;
-  font-size: 20px;
-  font-weight: bold;
   color: white;
-  margin-top: -24px;
+  opacity: 0.5;
 }
 
 #new-article .title .row:nth-child(2) div:hover {

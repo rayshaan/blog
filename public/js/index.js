@@ -51,9 +51,9 @@ $.ajax({
                 $("#recommend").append(`
                     <div class="col-sm-12 col-md-3">
                         <a href="javascript:;">
-                            <img src="${data[i].src}" alt="" onclick="href(this)">
+                            <img src="../../public/images/blog-img/blog1-img.jpg" alt="" onclick="href(this)">
                             <p style="display:none">${data[i]._id}</p>
-                            <span><h4>${title}</h4></span>
+                            <span>${title}</span>
                         </a>
                     </div>
                 `);
@@ -75,7 +75,7 @@ $.ajax({
                         </div>
                     </div>
                     <div class="article-img col-sm-12 col-md-6">
-                        <img src='${data[i].src}' alt="">
+                        <img src='../../public/images/blog-img/blog2-img.jpg' alt="">
                     </div>  
                 </div>
             `);
@@ -92,7 +92,6 @@ function prev(){
             url:'http://127.0.0.1:8989/prev',
             data:{prev:$("#now").text()},
             success(data){
-                console.log(data)
                 let str='';
                 for(let i in data){
                     str+=`
@@ -196,7 +195,6 @@ $("#searchinput").on('keydown',function(e){
                 title:$(this).val()
             },
             success(data){
-                console.log(data)
                 $(".blogs").remove();
                 for(let i=0;i<data.length;i++){
                     $(".limit").before(`

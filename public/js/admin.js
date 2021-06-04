@@ -29,7 +29,7 @@ $.ajax({
             str+=`
                 <tr>
                     <td class='long'>${data[i]._id}</td>
-                    <td class="short"><img src='${data[i].src}'></td>
+                    <td class="short"><img src='../../public/images/blog-img/blog2-img.jpg'></td>
                     <td class='long'>${title}</td>
                     <td class='long'>${data[i].author}</td>
                     <td class='long'>${data[i].date}</td>
@@ -82,7 +82,7 @@ function jump(a){
                 str+=`
                     <tr>
                         <td class='long'>${data[i]._id}</td>
-                        <td class="short"><img src='${data[i].src}'></td>
+                        <td class="short"><img src='../../public/images/blog-img/blog2-img.jpg'></td>
                         <td class='long'>${title}</td>
                         <td class='long'>${data[i].author}</td>
                         <td class='long'>${data[i].date}</td>
@@ -168,45 +168,6 @@ function next(a){
         });
     }
 }
-$.ajax({
-    url:'http://127.0.0.1:8989/fingbg',
-    success(data){
-        let as=$("#change").find('a');
-        for(let i=0;i<as.length;i++){
-            if(data[0].name==as[i].innerHTML){
-                $(as[i]).addClass('choose')
-            }
-        }
-    }
-});
-//修改音乐盒背景
-$('#through').click(function(){
-    $(this).addClass('choose').next().removeClass('choose');
-    $.ajax({
-        url:'http://127.0.0.1:8989/changebg',
-        method:'post',
-        data:{
-            change:$(this).text(),
-            src:"throughtime.html",
-            height:'1080'
-        },
-        success(data){
-            console.log(data)
-        }
-    });
-});
-$('#3D').click(function(){
-    $(this).addClass('choose').prev().removeClass('choose');
-    $.ajax({
-        url:'http://127.0.0.1:8989/changebg',
-        method:'post',
-        data:{
-            change:$(this).text(),
-            src:"3D.html",
-            height:'700'
-        }
-    });
-});
 //退出登录
 $("#logout").click(function(){
     $.ajax({
@@ -270,9 +231,7 @@ function update(a){
             id:$(a).parent().parent().children('td').get(0).innerHTML
         },
         success(data){//加载要修改的信息
-            console.log(data)
             $("#blogtitle").attr('placeholder',`${data[0].title}`);
-            $("#blogimg").attr('placeholder',`${data[0].src}`);
             $("#blogcontent").attr('placeholder',`${data[0].content}`);
             $("#blogauthor").attr('placeholder',`${$('#head span').text()}`);
             //点击确定修改
@@ -317,7 +276,7 @@ $("#searchinput").on('keydown',function(e){
                         str+=`
                             <tr>
                                 <td class='long'>${data[i]._id}</td>
-                                <td class="short"><img src='${data[i].src}'></td>
+                                <td class="short"><img src='../../public/images/blog-img/blog2-img.jpg'></td>
                                 <td class='long'>${title}</td>
                                 <td class='long'>${data[i].author}</td>
                                 <td class='long'>${data[i].date}</td>
@@ -353,13 +312,6 @@ $("#searchinput").on('keydown',function(e){
 //增加博客
 $(".upoff").click(()=>$(".cover2").hide())
 $("#upcancel").click(()=>$(".cover2").hide())
-$("#uploadimg").click(function(){
-    $("#upfileimg").click();
-})
-$("#upfileimg").on('change',function(){
-    console.log($("#upfileimg").val())
-    $("#upblogimg").val(`${$("#upfileimg").val()}`);
-})
 $("#publish").click(function(){
     $(".cover2").show();
     $("#upblogauthor").attr('placeholder',`${$('#head span').text()}`);
@@ -371,7 +323,6 @@ $("#publish").click(function(){
             //数据
             let obj={
                 title:$("#upblogtitle").val(),
-                src:$("#upblogimg").val()==""?$("#upblogimg").attr('placeholder'):$("#upblogimg").val(),
                 date:time,
                 p:$("#upblogp").val(),
                 content:$("#upblogcontent").val(),
@@ -414,12 +365,10 @@ socket.on('send',msg=>{
     if(username==`<span>${$("#head span").text()}</span>`){
         arr.splice(3,0," ","c","l","a","s","s","=","'","r","i","g","h","t","'");
         let mystr=arr.join('');
-        console.log(mystr)
         $("#session ul").append(`${mystr}`)
     }else{//别人发的
         arr.splice(3,0," ","c","l","a","s","s","=","'","l","e","f","t","'");
         let othersstr=arr.join('');
-        console.log(othersstr)
         $("#session ul").append(`${othersstr}`)
         //提醒有新消息
         if($("#web").css('display')=='none'){

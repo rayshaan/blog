@@ -27,7 +27,7 @@ app.use(session({
     },
     //配置持久化
     store:new nedbstore({
-        filename:'test.db'
+        filename:'user.db'
     })
 }));
 
@@ -40,8 +40,6 @@ app.use('/blogs',express.static('./views/blogs/'))
 
 app.set("view engine", "ejs");
 
-//音乐
-app.use('/music',express.static('./views/music/'));
 //留言板
 app.use('/message',express.static('./views/message/'));
 //资源
@@ -91,7 +89,6 @@ app.post('/get',urlencodedParser,(req,res)=>{
 })
 //加载博客
 app.post('/getlimit',urlencodedParser,(req,res)=>{
-    console.log('123')
     dao.find('blog','blogs',data=>{
         res.send(data);
     },{},{_id:-1},0,6)
@@ -126,26 +123,6 @@ app.get('/jumppage',(req,res)=>{
     dao.find('blog','blogs',data=>{
         res.send(data);
     },{},{_id:-1},number,6);
-});
-//加载音乐背景
-app.get('/fingbg',(req,res)=>{
-    dao.find('blog','bgtype',data=>{
-        res.send(data);
-    },{},{},0,0)
-});
-//更换音乐背景
-app.post('/changebg',urlencodedParser,(req,res)=>{
-    let id={
-        _id:new ObjectId('60047b33de225c1200d5bdcc')
-    }
-    let newdata={
-        name:req.body.change,
-        src:req.body.src,
-        height:req.body.height
-    }
-    dao.update('blog','bgtype',id,newdata,data=>{
-        res.send();
-    }); 
 });
 //查找用户名  判断注册和登录
 app.post('/username',urlencodedParser,(req,res)=>{

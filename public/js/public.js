@@ -1,11 +1,6 @@
 //点击回到顶部
 $("#back-homepage").click(()=>document.body.scrollTop = document.documentElement.scrollTop = 0);
-//更换背景
-let bg=1;
-setInterval(() => {
-    bg++;
-    bg!=9?$("#video").attr('src',`../../public/video/bg${bg}.mp4`):bg=0
-},1000*60*1);
+
 
 //计算时间
 setInterval(() => {
@@ -59,10 +54,6 @@ $.ajax({
 //跳转首页
 function homepage(a){
     location.href='/main';
-}
-//导航栏跳转音乐盒
-function music(a){
-    location.href='/music';
 }
 //导航栏跳转留言板
 function message(a){

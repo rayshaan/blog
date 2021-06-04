@@ -46,7 +46,6 @@ $("#fabu a").click(function(){
             let time=`${year}-${month}-${day}  ${hour}:${min}`;
             //回复评论    
             if($("textarea").attr('placeholder').startsWith('@')){
-                console.log('这是回复');
                 //找到回复位置
                 let elm=$(replythis).parent().parent()[0];
                 $(elm).after(`
@@ -59,27 +58,11 @@ $("#fabu a").click(function(){
                         </div>
                     </div>
                 `);
-                /* for(let i=0;i<$(".right-comment").find('.username').length;i++){
-                    if(`@${$(".right-comment").find('.username')[i].innerHTML}`==$("textarea").attr('placeholder')){
-                        let el=$($(".right-comment").find('.username')[i]).parent().parent()[0];
-                        $(el).after(`
-                            <div class="row song-comment">
-                                <a href="javascript:;" class="am col-0.5"><img src="../../public/images/comment-touxiang.png" alt=""></a>
-                                <div class="right-comment col-11.5">
-                                    <a href="javascript:;" class="username">${$("#user-input").val()}</a>&nbsp;&nbsp;<b style="color: #00B5AD;font-size: 16px;">${$("textarea").attr('placeholder')}</b>&nbsp;&nbsp;<span style="color: gray;font-size: 11px;">${time}</span><br>
-                                    <div class="comment-text">${$("textarea").val()}</div>
-                                    <a href="javascript:;" style="color: gray;" onclick="reply(this)">回复</a>
-                                </div>
-                            </div>
-                        `)
-                    }
-                } */
                 //回复后滚动到回复位置
                 $('html,body').animate({scrollTop:$($(elm)).offset().top},500);
                 //回复后改回提示
                 $("textarea").attr('placeholder','请输入评论')
             }else{
-                console.log('不是回复')
                 //添加新评论
                 $(".comments").append(`
                     <div class="row">
